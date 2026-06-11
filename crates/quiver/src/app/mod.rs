@@ -19,6 +19,7 @@ impl App {
     pub fn new(config: AppConfig) -> Result<Self, Error> {
         Ok(Self {
             render_service: RenderService::new(&config)?,
+
             config,
         })
     }
