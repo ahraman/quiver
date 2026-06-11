@@ -1,6 +1,7 @@
 use std::sync::Arc;
 
 use axum::{Router, debug_handler, response::IntoResponse, routing::get};
+use tower_http::services::ServeDir;
 
 use crate::AppState;
 
@@ -11,7 +12,9 @@ impl super::App {
 }
 
 fn build_global_router() -> Router<AppState> {
-    Router::new().route("/", get(root))
+    Router::new()
+        .route("/", get(root))
+        .nest_service("/assets", ServeDir::new("assets/public"))
 }
 
 #[debug_handler(state = AppState)]
