@@ -22,12 +22,17 @@ impl EnvConfig {
 #[derive(Debug, Default)]
 pub struct AppConfig {
     pub env: EnvConfig,
+
+    pub templates_path: String,
+    pub templates_suffix: String,
 }
 
 impl AppConfig {
     pub fn new() -> Result<Self, Error> {
         Ok(Self {
             env: EnvConfig::from_env()?,
+            templates_path: "assets/templates".to_string(),
+            templates_suffix: ".tera".to_string(),
         })
     }
 }
