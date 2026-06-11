@@ -1,4 +1,5 @@
 mod config;
+mod routes;
 
 use std::{ops::Deref, sync::Arc};
 
