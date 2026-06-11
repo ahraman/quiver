@@ -866,6 +866,7 @@ dependencies = [
  "axum",
  "axum-extra",
  "dotenvy",
+ "quiver-db",
  "serde",
  "serde_json",
  "tera",
@@ -874,6 +875,10 @@ dependencies = [
  "tower",
  "tower-http",
 ]
+
+[[package]]
+name = "quiver-db"
+version = "0.1.0"
 
 [[package]]
 name = "quote"
