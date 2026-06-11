@@ -20,8 +20,8 @@ impl RenderService {
     }
 
     fn new_tera(templates_path: String, templates_suffix: &str) -> Result<Tera, Error> {
-        let full_path = templates_path + "/**/*" + templates_suffix;
-        let tera = Tera::new(&full_path)?;
+        let glob = templates_path + "/**/*" + templates_suffix;
+        let tera = Tera::new(&glob)?;
 
         Ok(tera)
     }
