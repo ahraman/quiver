@@ -6,16 +6,21 @@ use std::{ops::Deref, sync::Arc};
 use axum::extract::{FromRequestParts, State};
 
 pub use self::config::*;
-use crate::Error;
+use crate::{Error, render::RenderService};
 
 #[derive(Debug)]
 pub struct App {
     pub config: AppConfig,
+
+    pub render_service: RenderService,
 }
 
 impl App {
     pub fn new(config: AppConfig) -> Result<Self, Error> {
-        Ok(Self { config })
+        Ok(Self {
+            render_service: RenderService::new(&config)?,
+            config,
+        })
     }
 }
 
