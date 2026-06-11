@@ -22,9 +22,6 @@ impl RenderService {
     fn new_tera(templates_path: String, templates_suffix: &str) -> Result<Tera, Error> {
         let full_path = templates_path + "/**/*" + templates_suffix;
         let tera = Tera::new(&full_path)?;
-        for template_name in tera.get_template_names() {
-            println!("{template_name}");
-        }
 
         Ok(tera)
     }
