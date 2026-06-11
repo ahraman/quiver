@@ -5,3 +5,4 @@ edition.workspace = true
 rust-version.workspace = true
 
 [dependencies]
+diesel = { version = "2.3.10", features = ["postgres", "uuid"] }
