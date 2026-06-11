@@ -1,3 +1,5 @@
+use axum::response::{IntoResponse, Response};
+
 #[derive(Debug, thiserror::Error)]
 pub enum Error {
     #[error(transparent)]
@@ -9,4 +11,10 @@ pub enum Error {
 
     #[error("environemnt variable {0} has error: {1}")]
     Env(String, #[source] std::env::VarError),
+}
+
+impl IntoResponse for Error {
+    fn into_response(self) -> Response {
+        format!("{self}").into_response()
+    }
 }
